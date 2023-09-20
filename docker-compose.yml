@@ -10,7 +10,7 @@ services:
       - "5432:5432"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      #- service_data:/var/lib/postgresql/data/
+      - service_data:/var/lib/postgresql/data/
     networks:
       - django_network
 
@@ -25,8 +25,8 @@ services:
       - .env
     ports:
       - "8000:8000"
-#    volumes:
-#      - .:/code
+    volumes:
+      - .:/code
     links:
       - db:db
     depends_on:
@@ -63,8 +63,8 @@ services:
       context: .
     command: celery -A core worker --loglevel=info
     container_name: celery_container_service
-#    volumes:
-#      - .:/code
+    volumes:
+      - .:/code
     env_file:
       - .env
     depends_on:
@@ -77,8 +77,8 @@ services:
     build: .
     command: /bin/sh -c "rm -f celerybeat-schedule && celery -A core beat --loglevel=info"
     container_name: celery_beat_service
-#    volumes:
-#      - .:/code
+    volumes:
+      - .:/code
     env_file:
       - .env
     depends_on:
@@ -87,9 +87,9 @@ services:
     networks:
       - django_network
 
-#volumes:
-#  service_data:
-#    driver: local
+volumes:
+  service_data:
+    driver: local
 
 networks:
   django_network:
