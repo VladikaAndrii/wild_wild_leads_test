@@ -13,7 +13,7 @@ class ProducerService:
         self.task_id = self._generate_task_id()
         self._create_order(orders_count)
 
-    def _create_order(self, orders_count) -> None:
+    def _create_order(self, orders_count: int) -> None:
         name = f'Order №{orders_count + 1}'
         description = f'ID: {self.task_id}'
 

@@ -10,7 +10,7 @@ bot = telebot.TeleBot(settings.TELEGRAM_API_KEY)
 
 
 @bot.message_handler(commands=['start', ])
-def send_welcome(message: Message):
+def send_welcome(message: Message) -> None:
     telegram_user_id = message.from_user.id
     telegram_user_object_exist = TelegramUser.objects.filter(telegram_user_id=telegram_user_id).exists()
     if not telegram_user_object_exist:
@@ -20,7 +20,7 @@ def send_welcome(message: Message):
         bot.reply_to(message, "Ви уже будете отримувати повідомлення про усі виконані замовлення")
 
 
-def send_message_to_telegram(message_data: dict, employee: Employee):
+def send_message_to_telegram(message_data: dict, employee: Employee) -> None:
     telegram_chat = TelegramUser.objects.first()
     if telegram_chat:
         message = get_task_message(message_data, employee)
