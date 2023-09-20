@@ -1,11 +1,11 @@
 from django.urls import path
 
-from orders_management.views import TablePage, DeleteTask
+from orders_management.views import TablePageView, DeleteTaskView
 
 app_name = "orders_management"
 
 urlpatterns = [
-    path('', TablePage.as_view(), name='main-page'),
+    path('', TablePageView.as_view(), name='main-page'),
 
-    path('api/delete-task/<int:task_id>', DeleteTask.as_view(), name='delete-task')
+    path('api/delete-task/<int:task_id>', DeleteTaskView.as_view(), name='delete-task')
 ]

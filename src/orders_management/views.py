@@ -9,7 +9,7 @@ from orders_management.management.commands.bot import send_message_to_telegram
 from orders_management.services.consumer import get_orders, delete_task
 
 
-class TablePage(LoginRequiredMixin, TemplateView):
+class TablePageView(LoginRequiredMixin, TemplateView):
     """
     Creating a table with user tasks.
     """
@@ -23,7 +23,7 @@ class TablePage(LoginRequiredMixin, TemplateView):
         return context
 
 
-class DeleteTask(View):
+class DeleteTaskView(View):
     """
     Delete task by his primary key and sending a message using Telegram bot.
     """

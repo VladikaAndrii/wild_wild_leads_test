@@ -2,7 +2,7 @@ from random import choice, randint
 from orders_management.models import Employee, Order
 
 
-class Producer:
+class ProducerService:
     def __init__(self):
         self.employee = None
         self.task_id = None

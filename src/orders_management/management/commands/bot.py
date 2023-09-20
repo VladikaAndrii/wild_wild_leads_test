@@ -1,11 +1,12 @@
 import telebot
 from django.core.management.base import BaseCommand
 from telebot.types import Message
+from django.conf import settings
 
 from orders_management.management.commands.utils import get_task_message
 from orders_management.models import TelegramUser, Employee
 
-bot = telebot.TeleBot("6108631970:AAG-YbmOS_flnXeYu_-nWlYaGJUPM3_xcoA")
+bot = telebot.TeleBot(settings.TELEGRAM_API_KEY)
 
 
 @bot.message_handler(commands=['start', ])
@@ -30,4 +31,4 @@ class Command(BaseCommand):
     help = "Run the bot"
 
     def handle(self, *args, **options):
-        bot.polling()
+        bot.infinity_polling()

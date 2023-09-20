@@ -1,9 +1,5 @@
-
-from datetime import datetime
-
 from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404
-from django.conf import settings
 
 from orders_management.models import Order
 
